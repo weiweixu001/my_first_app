@@ -2,7 +2,23 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
-import Person from './Person/Person.js'
+import Radium, {StyleRoot} from 'radium';
+import Person from './Person/Person.js';
+import styled from 'styled-components';
+
+const StyleButton=styled.button`
+   background-color: green;//regular css here
+   color: red;
+   font: inherit;
+   border: 1px solid bule;
+   padding : 8px;
+   cursor: pointer;
+   &:hover {
+     background-color: white;
+     color:black
+   }
+`;
+
 
 const element = <h1>Hello, Meow</h1>;
 
@@ -32,11 +48,12 @@ const App = props => {
     console.log(states)
   }
   return (
-    <div >
+    <StyleRoot>
+      <div >
       console.log("sdd")
       console.log(state1)
       <p>really working</p>
-      <button onClick={switchName}>Switch</button>
+      <StyleButton onClick={switchName}>Switch</StyleButton>
 
 
       <Person 
@@ -45,6 +62,9 @@ const App = props => {
       />
       <Person age={states.persons[1].age} name={states.persons[1].name}></Person>
     </div>
+
+    </StyleRoot>
+    
   )
   
    
